@@ -6,7 +6,7 @@ keine URL im Bild (die Funnel-URL kommt in das Link-/Button-Feld der Anzeige).
 
 | Datei | Konzept | Headline | Foto |
 |-------|---------|----------|------|
-| `gauss_shk_A-firmenwagen_*` | Firmenwagen / Identifikation | „Bald steht dein Name auf dem **Firmenwagen.**" | Firmensitz + Fahrzeuge |
+| `gauss_shk_A-firmenwagen_*` | Firmenwagen / Identifikation | „Dein Werkzeug. Dein Fahrzeug. **Dein Revier.**" | Firmensitz + Fahrzeuge |
 | `gauss_shk_B-feierabend_*`  | Work-Life / Benefit | „Feierabend ist bei uns **kein Zufall.**" | Bauhelm auf Plänen |
 | `gauss_shk_C-waermewende_*` | Sinn / Mission | „Andere reden von der Wärmewende. **Du baust sie ein.**" | Team am Bauplan |
 
