@@ -113,14 +113,14 @@ a { color: inherit; text-decoration: none; -webkit-tap-highlight-color: rgba(27,
 button { font: inherit; cursor: pointer; }
 ul { margin: 0; padding: 0; list-style: none; }
 p { margin: 0 0 1em; }
-h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing: -.015em; }
+h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing: -.015em; }
 [id] { scroll-margin-top: 74px; }
 
 .shell { max-width: 1160px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
 
-.h-display { font-size: clamp(27px, 4.6vw, 54px); line-height: 1.02; letter-spacing: -.025em; color: var(--ink); font-weight: 800; }
+.h-display { font-size: clamp(27px, 4.6vw, 54px); line-height: 1.1; letter-spacing: -.025em; color: var(--ink); font-weight: 800; }
 .h-display--light { color: var(--paper); }
-.lead { font-size: clamp(15px, 1.4vw, 18px); color: var(--ink-soft); max-width: 62ch; margin-top: 14px; }
+.lead { font-size: clamp(15px, 1.4vw, 18px); color: var(--ink-soft); max-width: 62ch; margin-top: 16px; line-height: 1.62; }
 
 .hl { position: relative; display: inline-block; z-index: 0; }
 .hl::before {
@@ -178,7 +178,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
 .section-head--center .eyebrow { justify-content: center; }
 .section-head--center .lead { margin-inline: auto; }
 
-.check-list { display: grid; gap: 10px; margin: 18px 0 22px; }
+.check-list { display: grid; gap: 12px; margin: 18px 0 22px; }
 .check-list li { position: relative; padding-left: 32px; font-weight: 500; }
 .check-list li::before {
   content: ""; position: absolute; left: 0; top: 3px;
@@ -214,7 +214,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
 /* ---- HERO ---- */
 .hero { padding: clamp(30px, 6vw, 64px) 0 clamp(20px, 3vw, 32px); }
 .hero__inner { display: grid; grid-template-columns: 1.06fr .94fr; gap: clamp(26px, 5vw, 54px); align-items: center; }
-.title { font-size: clamp(30px, 5.2vw, 58px); line-height: 1.03; letter-spacing: -.03em; margin-bottom: 18px; font-weight: 800; }
+.title { font-size: clamp(30px, 5.2vw, 58px); line-height: 1.08; letter-spacing: -.03em; margin-bottom: 20px; font-weight: 800; }
 .title .accentline { display: block; margin-top: 10px; }
 .hero .sub { font-size: clamp(16px, 1.5vw, 19px); color: var(--ink-soft); max-width: 56ch; margin-bottom: 24px; }
 .hero__cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
@@ -271,7 +271,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
 .bandphoto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(19,19,19,.84) 0%, rgba(19,19,19,.5) 42%, rgba(19,19,19,.08) 75%); }
 .bandphoto__cap { position: relative; z-index: 2; max-width: 560px; padding: clamp(26px, 5vw, 54px); color: var(--paper); }
 .bandphoto__cap .accentline { color: var(--warm); }
-.bandphoto__cap h3 { font-size: clamp(23px, 3.2vw, 38px); line-height: 1.05; margin: 8px 0 10px; font-weight: 800; }
+.bandphoto__cap h3 { font-size: clamp(23px, 3.2vw, 38px); line-height: 1.14; margin: 10px 0 12px; font-weight: 800; }
 .bandphoto__cap p { color: rgba(246,242,231,.88); font-size: 15.5px; margin: 0; max-width: 46ch; }
 
 /* ---- ROLLE ---- */
@@ -279,8 +279,8 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
 .role__col { padding: clamp(22px, 2.6vw, 30px); }
 .role__col h3 { font-size: 18px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; font-weight: 800; }
 .role__col h3 .tag { font-size: 12px; font-weight: 800; letter-spacing: .04em; background: var(--accent-tint); border: 1.5px solid var(--ink); border-radius: 7px; padding: 3px 8px; color: var(--accent-deep); }
-.role__col ul { display: grid; gap: 11px; }
-.role__col li { display: flex; gap: 10px; font-size: 15px; color: var(--ink-soft); }
+.role__col ul { display: grid; gap: 13px; }
+.role__col li { display: flex; gap: 10px; font-size: 15px; line-height: 1.5; color: var(--ink-soft); }
 .role__col li::before { content: ""; flex: none; width: 8px; height: 8px; margin-top: 7px; background: var(--accent); border: 1.5px solid var(--ink); border-radius: 3px; }
 .role__col--get { background: var(--warm-soft); }
 .role__col--get h3 .tag { background: #fff; color: var(--warm-deep); }
@@ -352,6 +352,33 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
 .contact__form-success-icon svg { width: 30px; height: 30px; }
 .contact__form-success h3 { font-size: clamp(22px, 2.4vw, 28px); margin-bottom: 8px; font-weight: 800; }
 .contact__form-success p { color: var(--ink-soft); margin: 0; }
+
+/* ---- WIZARD (mehrstufige Vorqualifizierung) ---- */
+.wizard { padding: clamp(22px, 3vw, 32px); }
+.wizard__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
+.wizard__count { font-weight: 700; font-size: 13px; color: var(--accent-deep); letter-spacing: .01em; white-space: nowrap; }
+.wizard__track { height: 8px; background: var(--accent-tint); border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; margin-bottom: 24px; }
+.wizard__fill { height: 100%; width: 16%; background: var(--warm); transition: width .35s ease; }
+.qstep { display: none; }
+.qstep.is-active { display: block; animation: qfade .3s ease; }
+@keyframes qfade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.q-title { font-size: clamp(19px, 2.4vw, 23px); font-weight: 800; line-height: 1.28; margin-bottom: 8px; letter-spacing: -.01em; }
+.q-sub { color: var(--mute); font-size: 14px; line-height: 1.5; margin-bottom: 20px; }
+.opts { display: grid; gap: 10px; }
+.opts--2 { grid-template-columns: 1fr 1fr; }
+.opt { display: flex; align-items: center; gap: 12px; padding: 15px 16px; min-height: 58px; border: 1.5px solid var(--ink); border-radius: var(--radius-md); background: var(--paper-2); cursor: pointer; font-weight: 600; font-size: 15.5px; line-height: 1.35; transition: transform .1s ease, box-shadow .1s ease, background .12s ease; }
+.opt:hover { transform: translate(-1px, -2px); box-shadow: var(--shadow-pop-sm); }
+.opt input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.opt__mark { flex: none; width: 22px; height: 22px; border-radius: 50%; border: 1.5px solid var(--ink); background: var(--white); display: grid; place-items: center; }
+.opt__mark::after { content: ""; width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background .12s ease; }
+.opt.is-selected { background: var(--warm-soft); box-shadow: var(--shadow-pop-sm); }
+.opt.is-selected .opt__mark { background: var(--warm); }
+.opt.is-selected .opt__mark::after { background: #fff; }
+.wizard__nav { display: flex; align-items: center; margin-top: 18px; min-height: 22px; }
+.wizard__back { background: transparent; border: 0; box-shadow: none; min-height: auto; padding: 6px 2px; color: var(--mute); font-weight: 600; font-size: 14px; text-decoration: underline; }
+.wizard__back:hover { color: var(--ink); transform: none; box-shadow: none; }
+.wizard__back[hidden] { display: none; }
+@media (max-width: 600px) { .opts--2 { grid-template-columns: 1fr; } }
 
 /* ---- FOOTER ---- */
 .footer { border-top: 1.5px solid var(--ink); background: var(--paper-2); padding: 38px 0 26px; }
@@ -674,57 +701,106 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
         </div>
       </div>
 
-      <form class="contact__form card-pop" id="applyForm" novalidate enctype="multipart/form-data">
+      <form class="wizard card-pop" id="applyForm" novalidate enctype="multipart/form-data">
         <input type="hidden" name="subject" value="Neue Bewerbung SHK-Meister · Gauß GmbH (Recruiting-Funnel)" />
         <input type="hidden" name="from_name" value="Gauß GmbH Karriere-Funnel" />
         <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off" />
-        <span class="badge"><span class="badge__dot"></span> 60-Sekunden-Bewerbung</span>
-        <h3 class="contact__form-title">Deine Bewerbung als SHK-Meister</h3>
 
-        <div class="contact__row">
-          <label class="contact__field"><span>Vorname *</span><input type="text" name="vorname" required autocomplete="given-name" /></label>
-          <label class="contact__field"><span>Nachname *</span><input type="text" name="nachname" required autocomplete="family-name" /></label>
+        <div class="wizard__head">
+          <span class="badge"><span class="badge__dot"></span> Bewerbung</span>
+          <span class="wizard__count">Schritt <span id="wzCur">1</span> / <span id="wzTot">6</span></span>
         </div>
-        <div class="contact__row">
-          <label class="contact__field"><span>E-Mail *</span><input type="email" name="email" required autocomplete="email" inputmode="email" /></label>
-          <label class="contact__field"><span>Telefon *</span><input type="tel" name="telefon" required autocomplete="tel" inputmode="tel" /></label>
+        <div class="wizard__track"><div class="wizard__fill" id="wzFill"></div></div>
+
+        <!-- 1 · Erfahrung -->
+        <div class="qstep is-active" data-step>
+          <h3 class="q-title">Wie viel Erfahrung hast du im SHK-Handwerk?</h3>
+          <p class="q-sub">Heizung, Sanitär &amp; Bad oder Klima — zähl einfach deine Praxisjahre.</p>
+          <div class="opts" data-auto>
+            <label class="opt"><input type="radio" name="erfahrung" value="Unter 2 Jahre" /><span class="opt__mark"></span><span>Unter 2 Jahre</span></label>
+            <label class="opt"><input type="radio" name="erfahrung" value="2 bis 5 Jahre" /><span class="opt__mark"></span><span>2 bis 5 Jahre</span></label>
+            <label class="opt"><input type="radio" name="erfahrung" value="5 bis 10 Jahre" /><span class="opt__mark"></span><span>5 bis 10 Jahre</span></label>
+            <label class="opt"><input type="radio" name="erfahrung" value="Ueber 10 Jahre" /><span class="opt__mark"></span><span>Über 10 Jahre</span></label>
+          </div>
         </div>
 
-        <label class="contact__field">
-          <span>Deine Qualifikation *</span>
-          <select name="qualifikation" required>
-            <option value="" disabled selected>Bitte auswählen …</option>
-            <option value="Installateur-/Heizungsbauermeister">Installateur-/Heizungsbauermeister</option>
-            <option value="Meister Anlagenmechanik SHK">Meister Anlagenmechanik SHK</option>
-            <option value="Techniker SHK">Techniker (SHK)</option>
-            <option value="Dipl.-Ing. / Bachelor">Dipl.-Ing. / Bachelor</option>
-            <option value="Meister kurz vor Abschluss">Meister kurz vor Abschluss</option>
-            <option value="Geselle mit Meister-Ambition">Geselle mit Meister-Ambition</option>
-          </select>
-        </label>
+        <!-- 2 · Bisherige Tätigkeit / Qualifikation -->
+        <div class="qstep" data-step>
+          <h3 class="q-title">Was hast du bisher gemacht?</h3>
+          <p class="q-sub">Deine Qualifikation bzw. dein Schwerpunkt.</p>
+          <div class="opts" data-auto>
+            <label class="opt"><input type="radio" name="qualifikation" value="Meister im SHK-Bereich" /><span class="opt__mark"></span><span>Meister im SHK-Bereich</span></label>
+            <label class="opt"><input type="radio" name="qualifikation" value="Techniker (SHK)" /><span class="opt__mark"></span><span>Techniker (SHK)</span></label>
+            <label class="opt"><input type="radio" name="qualifikation" value="Dipl.-Ing. / Bachelor" /><span class="opt__mark"></span><span>Dipl.-Ing. / Bachelor</span></label>
+            <label class="opt"><input type="radio" name="qualifikation" value="Geselle / Facharbeiter" /><span class="opt__mark"></span><span>Geselle / Facharbeiter</span></label>
+            <label class="opt"><input type="radio" name="qualifikation" value="Kurz vor dem Meister" /><span class="opt__mark"></span><span>Kurz vor dem Meister</span></label>
+          </div>
+        </div>
 
-        <label class="contact__field">
-          <span>Verfügbar ab</span>
-          <input type="text" name="verfuegbar" placeholder="z. B. sofort, 1. Oktober, nach Absprache" />
-        </label>
+        <!-- 3 · Führerschein -->
+        <div class="qstep" data-step>
+          <h3 class="q-title">Hast du einen Führerschein der Klasse B?</h3>
+          <p class="q-sub">Du bist mit deinem eigenen Fahrzeug bei Kunde und Baustelle unterwegs.</p>
+          <div class="opts opts--2" data-auto>
+            <label class="opt"><input type="radio" name="fuehrerschein" value="Ja, Klasse B" /><span class="opt__mark"></span><span>Ja, habe ich</span></label>
+            <label class="opt"><input type="radio" name="fuehrerschein" value="Nein" /><span class="opt__mark"></span><span>Noch nicht</span></label>
+          </div>
+        </div>
 
-        <label class="contact__field">
-          <span>Kurze Nachricht (optional)</span>
-          <textarea name="nachricht" rows="3" placeholder="Was solltest du noch über dich erzählen? Erfahrung, Schwerpunkt, Wunsch-Standort …"></textarea>
-        </label>
+        <!-- 4 · Großbaustellen -->
+        <div class="qstep" data-step>
+          <h3 class="q-title">Hast du schon auf Großbaustellen gearbeitet?</h3>
+          <p class="q-sub">Zum Beispiel Neubau, Sanierung oder Gewerbeobjekte.</p>
+          <div class="opts" data-auto>
+            <label class="opt"><input type="radio" name="grossbaustellen" value="Ja, regelmaessig" /><span class="opt__mark"></span><span>Ja, regelmäßig</span></label>
+            <label class="opt"><input type="radio" name="grossbaustellen" value="Ein paar Mal" /><span class="opt__mark"></span><span>Ein paar Mal</span></label>
+            <label class="opt"><input type="radio" name="grossbaustellen" value="Noch nicht" /><span class="opt__mark"></span><span>Noch nicht</span></label>
+          </div>
+        </div>
 
-        <label class="contact__field">
-          <span>Lebenslauf hochladen (optional, PDF max. 5 MB)</span>
-          <input type="file" name="lebenslauf" accept=".pdf,.doc,.docx" />
-        </label>
+        <!-- 5 · Deutschkenntnisse -->
+        <div class="qstep" data-step>
+          <h3 class="q-title">Wie gut sprichst du Deutsch?</h3>
+          <p class="q-sub">Für Kundenkontakt und die Absprache im Team.</p>
+          <div class="opts" data-auto>
+            <label class="opt"><input type="radio" name="deutsch" value="Muttersprache" /><span class="opt__mark"></span><span>Muttersprache</span></label>
+            <label class="opt"><input type="radio" name="deutsch" value="Sehr gut" /><span class="opt__mark"></span><span>Sehr gut</span></label>
+            <label class="opt"><input type="radio" name="deutsch" value="Gut" /><span class="opt__mark"></span><span>Gut</span></label>
+            <label class="opt"><input type="radio" name="deutsch" value="Grundkenntnisse" /><span class="opt__mark"></span><span>Grundkenntnisse</span></label>
+          </div>
+        </div>
 
-        <label class="contact__consent">
-          <input type="checkbox" name="datenschutz" required />
-          <span>Ich habe die <a href="https://www.laendle-digital.com/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zum Zweck des Bewerbungsverfahrens zu.</span>
-        </label>
+        <!-- 6 · Kontaktdaten -->
+        <div class="qstep" data-step>
+          <h3 class="q-title">Passt — jetzt nur noch deine Kontaktdaten.</h3>
+          <p class="q-sub">Gauß meldet sich innerhalb von 24 Stunden persönlich bei dir zurück.</p>
+          <div class="contact__row">
+            <label class="contact__field"><span>Vorname *</span><input type="text" name="vorname" required autocomplete="given-name" /></label>
+            <label class="contact__field"><span>Nachname *</span><input type="text" name="nachname" required autocomplete="family-name" /></label>
+          </div>
+          <div class="contact__row">
+            <label class="contact__field"><span>E-Mail *</span><input type="email" name="email" required autocomplete="email" inputmode="email" /></label>
+            <label class="contact__field"><span>Telefon *</span><input type="tel" name="telefon" required autocomplete="tel" inputmode="tel" /></label>
+          </div>
+          <label class="contact__field">
+            <span>Verfügbar ab</span>
+            <input type="text" name="verfuegbar" placeholder="z. B. sofort, 1. Oktober, nach Absprache" />
+          </label>
+          <label class="contact__field">
+            <span>Lebenslauf hochladen (optional, PDF max. 5 MB)</span>
+            <input type="file" name="lebenslauf" accept=".pdf,.doc,.docx" />
+          </label>
+          <label class="contact__consent">
+            <input type="checkbox" name="datenschutz" required />
+            <span>Ich habe die <a href="https://www.laendle-digital.com/datenschutz.html" target="_blank" rel="noopener">Datenschutzerklärung</a> gelesen und stimme der Verarbeitung meiner Daten zum Zweck des Bewerbungsverfahrens zu.</span>
+          </label>
+          <button type="submit" class="btn btn--primary btn--lg btn--block">Bewerbung absenden</button>
+          <p class="contact__form-note">100 % vertraulich · keine Weitergabe an Dritte.</p>
+        </div>
 
-        <button type="submit" class="btn btn--primary btn--lg btn--block">Bewerbung absenden</button>
-        <p class="contact__form-note">Gauß meldet sich innerhalb von 24 Stunden bei dir zurück.</p>
+        <div class="wizard__nav">
+          <button type="button" class="wizard__back" id="wzBack" hidden>Zurück</button>
+        </div>
       </form>
     </div>
   </section>
@@ -769,7 +845,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
   var y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
-  var els = document.querySelectorAll('.section-head, .service, .role__col, .process__step, .faq__item, .apply__intro, .contact__form, .trustbar__item, .bandphoto__cap');
+  var els = document.querySelectorAll('.section-head, .service, .role__col, .process__step, .faq__item, .apply__intro, .wizard, .trustbar__item, .bandphoto__cap');
   els.forEach(function (el) { el.classList.add('reveal'); });
   if ('IntersectionObserver' in window) {
     var io = new IntersectionObserver(function (entries) {
@@ -780,10 +856,47 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.12; font-weight: 800; letter-spacing:
     els.forEach(function (el) { el.classList.add('is-visible'); });
   }
 
-  /* Formular via Web3Forms (Account Ländle Digital – leitet Bewerbungen weiter) */
+  /* ---- Mehrstufiger Bewerbungs-Funnel (Vorqualifizierung -> Kontakt) ---- */
   var WEB3FORMS_ACCESS_KEY = '2df05c94-c19f-46ed-a4c2-ea64cf4aa302';
   var form = document.getElementById('applyForm');
   if (!form) return;
+
+  var steps = [].slice.call(form.querySelectorAll('[data-step]'));
+  var fill = document.getElementById('wzFill');
+  var curEl = document.getElementById('wzCur');
+  var totEl = document.getElementById('wzTot');
+  var back = document.getElementById('wzBack');
+  var idx = 0;
+  if (totEl) totEl.textContent = steps.length;
+
+  function show(i) {
+    idx = Math.max(0, Math.min(steps.length - 1, i));
+    steps.forEach(function (s, n) { s.classList.toggle('is-active', n === idx); });
+    if (fill) fill.style.width = Math.round((idx + 1) / steps.length * 100) + '%';
+    if (curEl) curEl.textContent = idx + 1;
+    if (back) back.hidden = idx === 0;
+    var apply = document.getElementById('bewerben');
+    if (apply && i > 0 && apply.getBoundingClientRect().top < 0) {
+      apply.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  form.querySelectorAll('.opt').forEach(function (opt) {
+    opt.addEventListener('click', function () {
+      var input = opt.querySelector('input');
+      if (!input) return;
+      form.querySelectorAll('input[name="' + input.name + '"]').forEach(function (o) {
+        var lab = o.closest('.opt'); if (lab) lab.classList.remove('is-selected');
+      });
+      input.checked = true;
+      opt.classList.add('is-selected');
+      if (opt.closest('[data-auto]') && idx < steps.length - 1) {
+        window.setTimeout(function () { show(idx + 1); }, 240);
+      }
+    });
+  });
+
+  if (back) back.addEventListener('click', function () { show(idx - 1); });
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
