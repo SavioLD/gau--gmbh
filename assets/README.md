@@ -1,13 +1,11 @@
 # Bilder für den Karriere-Funnel
 
-Bitte genau diese drei Dateien hier in `assets/` ablegen (gleiche Namen!).
-Sobald sie da sind, erscheinen sie automatisch auf der Seite. Fehlen sie,
-zeigt die Seite einen Marken-Farbverlauf (Blau→Orange) als Platzhalter.
+Aktuell eingebunden (Fotos wurden für Mobile auf 1920 px / ~85 % komprimiert):
 
-| Dateiname              | Foto                                                        | Verwendung                    |
-|------------------------|-------------------------------------------------------------|-------------------------------|
-| `gauss-standort.jpg`   | Firmensitz Altensteig mit Firmenfahrzeugen (Querformat)     | Hero rechts                   |
-| `gauss-team.jpg`       | Zwei Kollegen bei der Planung / am Bauplan (Querformat)     | Foto-Band „Team"              |
-| `gauss-helm.jpg`       | Gauß-Bauhelm auf Bauplänen (Querformat)                     | Bewerbungs-Sektion            |
+| Datei                                | Foto                                   | Verwendung          |
+|--------------------------------------|----------------------------------------|---------------------|
+| `MEDIUM 3840x2160 (0-00-00-19).jpeg` | Firmensitz Altensteig + Fahrzeuge      | Hero rechts         |
+| `MEDIUM 3840x2160 (0-00-21-00).jpeg` | Zwei Kollegen am Bauplan               | Foto-Band „Team"    |
+| `MEDIUM 3840x2160 (0-00-09-18).jpeg` | Gauß-Bauhelm auf Bauplänen             | Bewerbungs-Sektion  |
 
-Empfehlung: JPG/WebP, Breite ~1600 px, unter ~400 KB pro Bild.
+Fehlt eine Datei, zeigt die Seite einen Marken-Farbverlauf (Blau→Orange) als Platzhalter.
