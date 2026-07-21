@@ -116,7 +116,7 @@ p { margin: 0 0 1em; }
 h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing: -.015em; }
 [id] { scroll-margin-top: 74px; }
 
-.shell { max-width: 1160px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+.shell { max-width: 1160px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
 
 .h-display { font-size: clamp(27px, 4.6vw, 54px); line-height: 1.1; letter-spacing: -.025em; color: var(--ink); font-weight: 800; }
 .h-display--light { color: var(--paper); }
@@ -249,7 +249,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 .trustbar__lbl { font-size: 13.5px; color: var(--ink-soft); max-width: 22ch; }
 
 /* ---- SECTIONS ---- */
-.section { padding: clamp(44px, 7vw, 80px) 0; }
+.section { padding: clamp(48px, 7vw, 84px) 0; }
 .services__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .service { padding: clamp(22px, 3vw, 30px); position: relative; }
 .service__num {
@@ -269,7 +269,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 .bandphoto { position: relative; min-height: clamp(280px, 42vw, 440px); display: grid; place-items: end start; border-block: 1.5px solid var(--ink); }
 .bandphoto .photo { position: absolute; inset: 0; border: 0; border-radius: 0; box-shadow: none; }
 .bandphoto::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(19,19,19,.84) 0%, rgba(19,19,19,.5) 42%, rgba(19,19,19,.08) 75%); }
-.bandphoto__cap { position: relative; z-index: 2; max-width: 560px; padding: clamp(26px, 5vw, 54px); color: var(--paper); }
+.bandphoto__cap { position: relative; z-index: 2; max-width: 620px; padding: clamp(32px, 6vw, 56px) clamp(20px, 5vw, 40px); color: var(--paper); }
 .bandphoto__cap .accentline { color: var(--warm); }
 .bandphoto__cap h3 { font-size: clamp(23px, 3.2vw, 38px); line-height: 1.14; margin: 10px 0 12px; font-weight: 800; }
 .bandphoto__cap p { color: rgba(246,242,231,.88); font-size: 15.5px; margin: 0; max-width: 46ch; }
@@ -309,7 +309,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 .faq__item p { margin: 0 0 16px; color: var(--ink-soft); font-size: 15px; }
 
 /* ---- FINAL CTA ---- */
-.finalcta { padding: clamp(48px, 8vw, 84px) 0; text-align: center; }
+.finalcta { padding: clamp(48px, 7vw, 84px) 0; text-align: center; }
 .finalcta .accentline--big { display: block; margin-bottom: 10px; }
 .finalcta h2 { margin-bottom: 12px; }
 .finalcta p { font-size: 17px; max-width: 58ch; margin: 0 auto 22px; color: var(--ink-soft); }
@@ -317,7 +317,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 .finalcta__hint { font-size: 13px; color: var(--mute); margin-top: 18px; }
 
 /* ---- FORMULAR ---- */
-.apply { padding: clamp(38px, 6vw, 74px) 0 clamp(52px, 8vw, 90px); }
+.apply { padding: clamp(48px, 7vw, 84px) 0 clamp(56px, 8vw, 92px); }
 .apply__inner { display: grid; grid-template-columns: .95fr 1.05fr; gap: clamp(26px, 5vw, 54px); align-items: start; }
 .apply__intro h2 { margin-bottom: 12px; }
 .apply__intro p { color: var(--ink-soft); }
@@ -392,7 +392,8 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 .footer__bottom a { text-decoration: underline; }
 
 /* ---- STICKY MOBILE CTA ---- */
-.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(246,242,231,.96); backdrop-filter: blur(8px); border-top: 1.5px solid var(--ink); display: none; }
+.sticky-cta { position: fixed; left: 0; right: 0; bottom: 0; z-index: 70; padding: 10px clamp(20px, 5vw, 40px) calc(10px + env(safe-area-inset-bottom)); background: rgba(246,242,231,.96); backdrop-filter: blur(8px); border-top: 1.5px solid var(--ink); display: none; transition: transform .25s ease; }
+.sticky-cta.is-hidden { transform: translateY(120%); }
 .sticky-cta .btn { width: 100%; }
 
 /* ---- REVEAL ---- */
@@ -406,7 +407,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
   .services__grid, .role__grid, .process__steps { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 820px) {
-  .hero__inner { grid-template-columns: 1fr; gap: 26px; }
+  .hero__inner { grid-template-columns: 1fr; gap: 28px; }
   .photo--hero { transform: none; aspect-ratio: 16 / 10; }
   .hero__stelle { right: 10px; top: 10px; }
   .apply__inner { grid-template-columns: 1fr; }
@@ -416,11 +417,20 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
   .services__grid, .role__grid, .process__steps, .footer__inner { grid-template-columns: 1fr; }
   .contact__row { grid-template-columns: 1fr; }
   .hero__cta .btn, .finalcta__btns .btn { width: 100%; }
+  /* Stat-Leiste als sauberes 2x2-Raster statt unruhigem Umbruch */
+  .trustbar__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 18px; }
+  .trustbar__item { flex: initial; }
   .sticky-cta { display: block; }
-  main { padding-bottom: 78px; }
+  main { padding-bottom: 12px; }
+  /* Abstand, damit der Sticky-Button den Footer nicht überlappt */
+  .footer { padding-bottom: 84px; }
   .topbar__cta { display: none; }
+  .bandphoto__cap { max-width: none; }
   .bandphoto::after { background: linear-gradient(180deg, rgba(19,19,19,.32) 0%, rgba(19,19,19,.84) 72%); }
   .bandphoto { place-items: end stretch; }
+}
+@media (max-width: 380px) {
+  .trustbar__inner { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -853,6 +863,15 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
     els.forEach(function (el) { io.observe(el); });
   } else {
     els.forEach(function (el) { el.classList.add('is-visible'); });
+  }
+
+  /* ---- Sticky-CTA ausblenden, sobald das Formular sichtbar ist ---- */
+  var stickyCta = document.querySelector('.sticky-cta');
+  var applySection = document.getElementById('bewerben');
+  if (stickyCta && applySection && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { stickyCta.classList.toggle('is-hidden', e.isIntersecting); });
+    }, { threshold: 0.05 }).observe(applySection);
   }
 
   /* ---- Mehrstufiger Bewerbungs-Funnel (Vorqualifizierung -> Kontakt) ---- */
