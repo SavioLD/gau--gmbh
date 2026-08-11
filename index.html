@@ -876,6 +876,10 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 
   /* ---- Mehrstufiger Bewerbungs-Funnel (Vorqualifizierung -> Kontakt) ---- */
   var WEB3FORMS_ACCESS_KEY = '2df05c94-c19f-46ed-a4c2-ea64cf4aa302';
+  /* LeadTable-Anbindung: In LeadTable eine Leadquelle vom Typ "Webhook" anlegen,
+     die dort angezeigte Webhook-URL kopieren und hier einsetzen.
+     Leer = nur Web3Forms-Benachrichtigung. */
+  var LEADTABLE_WEBHOOK_URL = 'https://api-v2.lead-table.com/api/webhook/generic/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZUlEIjoiNmE2ZjNjOWVjMjczYTRlZjg2YmY0OWJlIiwiY3VzdG9tZXJJRCI6IjZhNmYzYmJlNGMyNjlmMjM3NTJjNDBhNCIsImFnZW5jeUlEIjoiNjliZDc3NzVlNGQxN2IzOGVkNjUzZDE2IiwiaWF0IjoxNzg1Njc0OTEwfQ.uLO0a158uHXEnTiaNx7HeCpcg93jGzkP14EpsfeLRVg';
   var form = document.getElementById('applyForm');
   if (!form) return;
 
@@ -929,6 +933,9 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
     fd.append('access_key', WEB3FORMS_ACCESS_KEY);
     fd.append('source', 'gauss-shk-meister-funnel');
 
+    // Lead zusätzlich an LeadTable senden (fire-and-forget, blockiert das Formular nicht)
+    sendToLeadTable(fd);
+
     fetch('https://api.web3forms.com/submit', {
       method: 'POST', headers: { Accept: 'application/json' }, body: fd
     }).then(function (res) {
@@ -946,6 +953,44 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
       alert('Beim Senden ist etwas schiefgegangen. Bitte schreib uns kurz an gauss.nagold@gauss-gmbh.de oder ruf +49 7452 93204-0 an.');
     });
   });
+
+  function sendToLeadTable(fd) {
+    if (!LEADTABLE_WEBHOOK_URL) return;
+    var g = function (k) { return (fd.get(k) || '').toString().trim(); };
+    var vor = g('vorname'), nach = g('nachname');
+    var summary =
+      'Erfahrung: ' + g('erfahrung') +
+      ' · Bisher: ' + g('qualifikation') +
+      ' · Führerschein: ' + g('fuehrerschein') +
+      ' · Großbaustellen: ' + g('grossbaustellen') +
+      ' · Deutsch: ' + g('deutsch') +
+      ' · Verfügbar ab: ' + (g('verfuegbar') || 'k. A.');
+    var payload = {
+      name: (vor + ' ' + nach).trim(),
+      first_name: vor, last_name: nach, vorname: vor, nachname: nach,
+      email: g('email'),
+      phone: g('telefon'), telefon: g('telefon'),
+      erfahrung: g('erfahrung'),
+      qualifikation: g('qualifikation'),
+      fuehrerschein: g('fuehrerschein'),
+      grossbaustellen: g('grossbaustellen'),
+      deutsch: g('deutsch'),
+      verfuegbar_ab: g('verfuegbar'),
+      stelle: 'SHK-Meister (m/w/d)',
+      quelle: 'Gauß SHK-Meister Funnel',
+      message: summary, nachricht: summary
+    };
+    var body = JSON.stringify(payload);
+    fetch(LEADTABLE_WEBHOOK_URL, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body
+    }).catch(function () {
+      // Fallback ohne CORS-Preflight, falls der JSON-Post blockiert wird
+      fetch(LEADTABLE_WEBHOOK_URL, {
+        method: 'POST', mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body
+      }).catch(function () {});
+    });
+  }
 
   function escapeHtml(s) {
     return String(s || '').replace(/[&<>"']/g, function (c) {
