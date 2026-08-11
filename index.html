@@ -357,8 +357,9 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 .wizard { padding: clamp(22px, 3vw, 32px); }
 .wizard__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 14px; }
 .wizard__count { font-weight: 700; font-size: 13px; color: var(--accent-deep); letter-spacing: .01em; white-space: nowrap; }
-.wizard__track { height: 8px; background: var(--accent-tint); border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; margin-bottom: 24px; }
+.wizard__track { height: 8px; background: var(--accent-tint); border: 1.5px solid var(--ink); border-radius: 999px; overflow: hidden; margin-bottom: 10px; }
 .wizard__fill { height: 100%; width: 16%; background: var(--warm); transition: width .35s ease; }
+.wizard__hint { font-size: 13px; color: var(--mute); margin: 0 0 22px; font-weight: 500; }
 .qstep { display: none; }
 .qstep.is-active { display: block; animation: qfade .3s ease; }
 @keyframes qfade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -379,6 +380,15 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 .wizard__back:hover { color: var(--ink); transform: none; box-shadow: none; }
 .wizard__back[hidden] { display: none; }
 @media (max-width: 600px) { .opts--2 { grid-template-columns: 1fr; } }
+
+/* ---- Konversions-Effekte (bewegungsreduziert abschaltbar) ---- */
+@media (prefers-reduced-motion: no-preference) {
+  .bandphoto { overflow: hidden; }
+  .bandphoto .photo { animation: kenburns 22s ease-in-out infinite alternate; transform-origin: 62% 38%; will-change: transform; }
+  @keyframes kenburns { from { transform: scale(1); } to { transform: scale(1.09); } }
+  .opt.is-selected { animation: optpop .22s ease; }
+  @keyframes optpop { 0% { transform: scale(1); } 45% { transform: scale(1.02); } 100% { transform: scale(1); } }
+}
 
 /* ---- FOOTER ---- */
 .footer { border-top: 1.5px solid var(--ink); background: var(--paper-2); padding: 38px 0 26px; }
@@ -492,10 +502,10 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
   <!-- TRUSTBAR -->
   <section class="trustbar">
     <div class="shell trustbar__inner">
-      <div class="trustbar__item"><span class="trustbar__num">1965</span><span class="trustbar__lbl">gegründet als Familienbetrieb in Altensteig</span></div>
-      <div class="trustbar__item"><span class="trustbar__num">3</span><span class="trustbar__lbl">Standorte in der Region Nordschwarzwald</span></div>
-      <div class="trustbar__item"><span class="trustbar__num">60</span><span class="trustbar__lbl">Jahre Erfahrung in Heizung, Bad &amp; Klima</span></div>
-      <div class="trustbar__item"><span class="trustbar__num">100 %</span><span class="trustbar__lbl">inhabergeführt — kurze Wege, echte Entscheidungen</span></div>
+      <div class="trustbar__item"><span class="trustbar__num" data-count="1965">1965</span><span class="trustbar__lbl">gegründet als Familienbetrieb in Altensteig</span></div>
+      <div class="trustbar__item"><span class="trustbar__num" data-count="3">3</span><span class="trustbar__lbl">Standorte in der Region Nordschwarzwald</span></div>
+      <div class="trustbar__item"><span class="trustbar__num" data-count="60">60</span><span class="trustbar__lbl">Jahre Erfahrung in Heizung, Bad &amp; Klima</span></div>
+      <div class="trustbar__item"><span class="trustbar__num" data-count="100" data-suffix=" %">100 %</span><span class="trustbar__lbl">inhabergeführt — kurze Wege, echte Entscheidungen</span></div>
     </div>
   </section>
 
@@ -720,6 +730,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
           <span class="wizard__count">Schritt <span id="wzCur">1</span> / <span id="wzTot">6</span></span>
         </div>
         <div class="wizard__track"><div class="wizard__fill" id="wzFill"></div></div>
+        <p class="wizard__hint">Dauert nur 60 Sekunden · kein Anschreiben nötig · 100 % vertraulich</p>
 
         <!-- 1 · Erfahrung -->
         <div class="qstep is-active" data-step>
@@ -864,6 +875,31 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
   } else {
     els.forEach(function (el) { el.classList.add('is-visible'); });
   }
+
+  /* ---- Zahlen hochzählen (Trust-Leiste) ---- */
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var nums = document.querySelectorAll('.trustbar__num[data-count]');
+    if (!nums.length || reduce || !('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        obs.unobserve(e.target);
+        var el = e.target;
+        var target = parseInt(el.getAttribute('data-count'), 10) || 0;
+        var suf = el.getAttribute('data-suffix') || '';
+        var dur = 1200, start = null;
+        function tick(ts) {
+          if (start === null) start = ts;
+          var p = Math.min(1, (ts - start) / dur);
+          el.textContent = Math.round((1 - Math.pow(1 - p, 3)) * target) + suf;
+          if (p < 1) requestAnimationFrame(tick); else el.textContent = target + suf;
+        }
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.5 });
+    nums.forEach(function (n) { obs.observe(n); });
+  })();
 
   /* ---- Sticky-CTA ausblenden, sobald das Formular sichtbar ist ---- */
   var stickyCta = document.querySelector('.sticky-cta');
