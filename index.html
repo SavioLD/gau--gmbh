@@ -922,6 +922,11 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 
   form.addEventListener('submit', function (e) {
     e.preventDefault();
+    // Alle Vorqualifizierungs-Fragen müssen beantwortet sein – sonst zur ersten offenen zurück
+    var qGroups = ['erfahrung', 'qualifikation', 'fuehrerschein', 'grossbaustellen', 'deutsch'];
+    for (var gi = 0; gi < qGroups.length; gi++) {
+      if (!form.querySelector('input[name="' + qGroups[gi] + '"]:checked')) { show(gi); return; }
+    }
     if (!form.checkValidity()) { form.reportValidity(); return; }
     var fd = new FormData(form);
     var vorname = fd.get('vorname') || '';
@@ -965,11 +970,11 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
       ' · Großbaustellen: ' + g('grossbaustellen') +
       ' · Deutsch: ' + g('deutsch') +
       ' · Verfügbar ab: ' + (g('verfuegbar') || 'k. A.');
+    // Jeden Wert nur EINMAL senden – LeadTable haengt gleichbedeutende Felder sonst aneinander
     var payload = {
       name: (vor + ' ' + nach).trim(),
-      first_name: vor, last_name: nach, vorname: vor, nachname: nach,
       email: g('email'),
-      phone: g('telefon'), telefon: g('telefon'),
+      phone: g('telefon'),
       erfahrung: g('erfahrung'),
       qualifikation: g('qualifikation'),
       fuehrerschein: g('fuehrerschein'),
@@ -978,7 +983,7 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
       verfuegbar_ab: g('verfuegbar'),
       stelle: 'SHK-Meister (m/w/d)',
       quelle: 'Gauß SHK-Meister Funnel',
-      message: summary, nachricht: summary
+      nachricht: summary
     };
     var body = JSON.stringify(payload);
     fetch(LEADTABLE_WEBHOOK_URL, {
