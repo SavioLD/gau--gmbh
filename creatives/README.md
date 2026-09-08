@@ -1,18 +1,20 @@
 # Ad-Creatives · Projektleiter (m/w/d) · Gauß GmbH
 
-Zielgruppe: **Techniker, Meister & Bachelor als Projektleiter** (Büro/Projektführung,
-nicht handwerklich-produktiv). Je Konzept als **4:5 (2160×2700)** und **Story 9:16 (2160×3840)**.
+Zwei Standort-Kampagnen (Meta, je 35 km Radius): **Nagold** und **Rottenburg**.
+Je 3 Konzepte × 2 Formate = 12 Creatives. Für **Techniker, Meister & Bachelor** als Projektleiter.
 Marke: Gauß-Blau/Orange, Original-Logo, DM Sans. Echte Fotos. Keine URL im Bild.
 
-| Datei | Konzept | Headline | Foto |
-|-------|---------|----------|------|
-| `gauss_shk_A-projektleiter_*` | Verantwortung / Führung | „Dein Projekt. Dein Team. **Dein Ergebnis.**" | Firmensitz |
-| `gauss_shk_B-feierabend_*`   | Work-Life | „Feierabend ist bei uns **kein Zufall.**" | Bauhelm auf Plänen |
-| `gauss_shk_C-waermewende_*`  | Sinn / Mission | „Andere reden von der Wärmewende. **Du leitest sie.**" | Team am Bauplan |
+| Konzept | Headline | Foto |
+|---|---|---|
+| A | Dein Projekt. Dein Team. **Dein Ergebnis.** | Firmensitz |
+| B | Feierabend ist bei uns **kein Zufall.** | Bauhelm auf Plänen |
+| C | Andere reden von der Wärmewende. **Du leitest sie.** | Team am Bauplan |
 
-`_4x5` = Feed, `_9x16` = Story/Reels. **Ziel-URL für den Anzeigen-Button:** https://saviold.github.io/gau--gmbh/
+Dateien: `gauss_projektleiter_<nagold|rottenburg>_<A|B|C>_<4x5|9x16>.jpg`
+Formate: `4x5` = Feed (2160×2700), `9x16` = Story/Reels (2160×3840).
 
-## Caption-Vorschläge
-- **A:** Familienbetrieb seit 1965 sucht einen Projektleiter (m/w/d) – für Techniker, Meister oder Bachelor. Verantwortung ab Tag 1, Firmenwagen, unbefristet. Bewirb dich in 60 Sekunden.
-- **B:** Planbare Projekte, faire Work-Life-Balance, Gauß-Rente. Projektleiter (m/w/d) im Nordschwarzwald gesucht – Techniker, Meister, Bachelor willkommen.
-- **C:** Wärmepumpe, Bad & Klima – bei Gauß führst du die Projekte. Projektleiter (m/w/d), Familienbetrieb seit 1965.
+## Ziel-URLs (ins Website-/Button-Feld der Anzeige)
+- **Nagold-Ads:** https://saviold.github.io/gau--gmbh/?standort=nagold
+- **Rottenburg-Ads:** https://saviold.github.io/gau--gmbh/?standort=rottenburg
+
+Der Parameter belegt den Standort im Funnel vor → der Lead landet **automatisch in der richtigen LeadTable-Tabelle** (Nagold ↔ Rottenburg).
