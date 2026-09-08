@@ -933,25 +933,28 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
     if (fill) fill.style.width = Math.round((idx + 1) / steps.length * 100) + '%';
     if (curEl) curEl.textContent = idx + 1;
     if (back) back.hidden = idx === 0;
-    var apply = document.getElementById('bewerben');
-    if (apply && i > 0 && apply.getBoundingClientRect().top < 0) {
-      apply.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Kein Auto-Scroll beim Schrittwechsel – das riss auf Mobil die Ansicht weg.
   }
 
-  form.querySelectorAll('.opt').forEach(function (opt) {
-    opt.addEventListener('click', function () {
-      var input = opt.querySelector('input');
-      if (!input) return;
-      form.querySelectorAll('input[name="' + input.name + '"]').forEach(function (o) {
-        var lab = o.closest('.opt'); if (lab) lab.classList.remove('is-selected');
-      });
-      input.checked = true;
-      opt.classList.add('is-selected');
-      if (opt.closest('[data-auto]') && idx < steps.length - 1) {
-        window.setTimeout(function () { show(idx + 1); }, 240);
-      }
+  // Auswahl über das change-Event (feuert genau einmal) + Doppel-/Ghost-Tap-Schutz,
+  // damit auf Mobil keine Frage übersprungen wird.
+  var advanceTimer = null;
+  function selectOption(input) {
+    form.querySelectorAll('input[name="' + input.name + '"]').forEach(function (o) {
+      var lab = o.closest('.opt'); if (lab) lab.classList.toggle('is-selected', o === input);
     });
+    var stepEl = input.closest('[data-step]');
+    var stepIdx = steps.indexOf(stepEl);
+    if (input.closest('[data-auto]') && stepIdx === idx && idx < steps.length - 1) {
+      if (advanceTimer) { window.clearTimeout(advanceTimer); }
+      advanceTimer = window.setTimeout(function () {
+        advanceTimer = null;
+        if (idx === stepIdx) { show(stepIdx + 1); }
+      }, 260);
+    }
+  }
+  form.querySelectorAll('.opt input[type="radio"]').forEach(function (input) {
+    input.addEventListener('change', function () { selectOption(input); });
   });
 
   if (back) back.addEventListener('click', function () { show(idx - 1); });
