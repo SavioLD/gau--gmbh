@@ -732,8 +732,18 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
         <div class="wizard__track"><div class="wizard__fill" id="wzFill"></div></div>
         <p class="wizard__hint">Dauert nur 60 Sekunden · kein Anschreiben nötig · 100 % vertraulich</p>
 
-        <!-- 1 · Erfahrung -->
+        <!-- 0 · Standort -->
         <div class="qstep is-active" data-step>
+          <h3 class="q-title">Für welchen Standort bewirbst du dich?</h3>
+          <p class="q-sub">Beide Stellen sind identisch – wähl einfach deinen Wunsch-Standort.</p>
+          <div class="opts" data-auto>
+            <label class="opt"><input type="radio" name="standort" value="Nagold" /><span class="opt__mark"></span><span>Nagold &amp; Umgebung</span></label>
+            <label class="opt"><input type="radio" name="standort" value="Rottenburg" /><span class="opt__mark"></span><span>Rottenburg &amp; Umgebung</span></label>
+          </div>
+        </div>
+
+        <!-- 1 · Erfahrung -->
+        <div class="qstep" data-step>
           <h3 class="q-title">Wie viel Erfahrung hast du im SHK-Handwerk?</h3>
           <p class="q-sub">Heizung, Sanitär &amp; Bad oder Klima — zähl einfach deine Praxisjahre.</p>
           <div class="opts" data-auto>
@@ -912,10 +922,12 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 
   /* ---- Mehrstufiger Bewerbungs-Funnel (Vorqualifizierung -> Kontakt) ---- */
   var WEB3FORMS_ACCESS_KEY = '2df05c94-c19f-46ed-a4c2-ea64cf4aa302';
-  /* LeadTable-Anbindung: In LeadTable eine Leadquelle vom Typ "Webhook" anlegen,
-     die dort angezeigte Webhook-URL kopieren und hier einsetzen.
-     Leer = nur Web3Forms-Benachrichtigung. */
-  var LEADTABLE_WEBHOOK_URL = 'https://api-v2.lead-table.com/api/webhook/generic/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZUlEIjoiNmE4MmQ1YzJjNGRiN2VhMDMzNzZjOGJhIiwiY3VzdG9tZXJJRCI6IjZhODJkNWFiNTFiNjBkMDA5MmRiNzkxOSIsImFnZW5jeUlEIjoiNjliZDc3NzVlNGQxN2IzOGVkNjUzZDE2IiwiaWF0IjoxNzg2OTU5Mjk4fQ.bbVZ_fsghgaxKtKr-W35xh_LfDyBzY9e_gFWETEtbQg';
+  /* LeadTable-Anbindung: pro Standort eine eigene Webhook-URL (eigene Tabelle).
+     Das Routing passiert automatisch anhand der Standort-Auswahl im Funnel. */
+  var LT_WEBHOOKS = {
+    nagold:     'https://api-v2.lead-table.com/api/webhook/generic/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZUlEIjoiNmE4MmQ1YzJjNGRiN2VhMDMzNzZjOGJhIiwiY3VzdG9tZXJJRCI6IjZhODJkNWFiNTFiNjBkMDA5MmRiNzkxOSIsImFnZW5jeUlEIjoiNjliZDc3NzVlNGQxN2IzOGVkNjUzZDE2IiwiaWF0IjoxNzg2OTU5Mjk4fQ.bbVZ_fsghgaxKtKr-W35xh_LfDyBzY9e_gFWETEtbQg',
+    rottenburg: 'https://api-v2.lead-table.com/api/webhook/generic/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0YWJsZUlEIjoiNmE5ZmQ3ZGVjN2FkMWJkMDJiMGI4NjRkIiwiY3VzdG9tZXJJRCI6IjZhODJkNWFiNTFiNjBkMDA5MmRiNzkxOSIsImFnZW5jeUlEIjoiNjliZDc3NzVlNGQxN2IzOGVkNjUzZDE2IiwiaWF0IjoxNzg4ODYwMzgyfQ._ZdarHitlD4lcpMsGZ9DGxZAD1-Wod5PCtb0gj8bbXM'
+  };
   var form = document.getElementById('applyForm');
   if (!form) return;
 
@@ -959,10 +971,22 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
 
   if (back) back.addEventListener('click', function () { show(idx - 1); });
 
+  // Standort aus URL-Parameter vorbelegen (?standort=rottenburg oder ?standort=nagold)
+  (function () {
+    try {
+      var p = new URLSearchParams(window.location.search).get('standort') || '';
+      if (!p) return;
+      var wanted = /rotten/i.test(p) ? 'Rottenburg' : (/nagold|nord|schwarz/i.test(p) ? 'Nagold' : '');
+      if (!wanted) return;
+      var radio = form.querySelector('input[name="standort"][value="' + wanted + '"]');
+      if (radio) { radio.checked = true; var lab = radio.closest('.opt'); if (lab) lab.classList.add('is-selected'); }
+    } catch (e) {}
+  })();
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     // Alle Vorqualifizierungs-Fragen müssen beantwortet sein – sonst zur ersten offenen zurück
-    var qGroups = ['erfahrung', 'qualifikation', 'fuehrerschein', 'grossbaustellen', 'deutsch'];
+    var qGroups = ['standort', 'erfahrung', 'qualifikation', 'fuehrerschein', 'grossbaustellen', 'deutsch'];
     for (var gi = 0; gi < qGroups.length; gi++) {
       if (!form.querySelector('input[name="' + qGroups[gi] + '"]:checked')) { show(gi); return; }
     }
@@ -999,11 +1023,14 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
   });
 
   function sendToLeadTable(fd) {
-    if (!LEADTABLE_WEBHOOK_URL) return;
     var g = function (k) { return (fd.get(k) || '').toString().trim(); };
+    var standort = g('standort') || 'Nagold';
+    var url = /rotten/i.test(standort) ? LT_WEBHOOKS.rottenburg : LT_WEBHOOKS.nagold;
+    if (!url) return;
     var vor = g('vorname'), nach = g('nachname');
     var summary =
-      'Erfahrung: ' + g('erfahrung') +
+      'Standort: ' + standort +
+      ' · Erfahrung: ' + g('erfahrung') +
       ' · Bisher: ' + g('qualifikation') +
       ' · Führerschein: ' + g('fuehrerschein') +
       ' · Großbaustellen: ' + g('grossbaustellen') +
@@ -1015,22 +1042,23 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
       last_name: nach,
       email: g('email'),
       phone: g('telefon'),
+      standort: standort,
       erfahrung: g('erfahrung'),
       qualifikation: g('qualifikation'),
       fuehrerschein: g('fuehrerschein'),
       grossbaustellen: g('grossbaustellen'),
       deutsch: g('deutsch'),
       verfuegbar_ab: g('verfuegbar'),
-      stelle: 'Projektleiter (m/w/d)',
-      quelle: 'Gauß Projektleiter Funnel',
+      stelle: 'Projektleiter (m/w/d) · ' + standort,
+      quelle: 'Gauß Projektleiter Funnel · ' + standort,
       nachricht: summary
     };
     var body = JSON.stringify(payload);
-    fetch(LEADTABLE_WEBHOOK_URL, {
+    fetch(url, {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: body
     }).catch(function () {
       // Fallback ohne CORS-Preflight, falls der JSON-Post blockiert wird
-      fetch(LEADTABLE_WEBHOOK_URL, {
+      fetch(url, {
         method: 'POST', mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain;charset=UTF-8' }, body: body
       }).catch(function () {});
