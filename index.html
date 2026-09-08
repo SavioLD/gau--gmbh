@@ -1011,7 +1011,8 @@ h1, h2, h3, h4 { margin: 0; line-height: 1.16; font-weight: 800; letter-spacing:
       ' · Verfügbar ab: ' + (g('verfuegbar') || 'k. A.');
     // Jeden Wert nur EINMAL senden – LeadTable haengt gleichbedeutende Felder sonst aneinander
     var payload = {
-      name: (vor + ' ' + nach).trim(),
+      first_name: vor,
+      last_name: nach,
       email: g('email'),
       phone: g('telefon'),
       erfahrung: g('erfahrung'),
