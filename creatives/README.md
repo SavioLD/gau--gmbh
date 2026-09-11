@@ -1,8 +1,15 @@
-# Ad-Creatives · Projektleiter (m/w/d) · Gauß GmbH · Standort Rottenburg
+# Ad-Creatives · Projektleiter (m/w/d) · Gauß GmbH
 
-Meta-Kampagne für den **Standort Rottenburg** (Radius 35 km).
-3 Konzepte × 2 Formate = 6 Creatives. Für **Techniker, Meister & Bachelor** als Projektleiter.
-Marke: Gauß-Blau/Orange, Original-Logo, DM Sans. Echte Fotos. Keine URL im Bild.
+Zwei getrennte Kampagnen (je eigene Landingpage + eigene LeadTable-Tabelle):
+
+| Standort | Landingpage (Ziel-URL) | LeadTable |
+|---|---|---|
+| **Rottenburg** | https://saviold.github.io/gau--gmbh/ | Rottenburg-Tabelle |
+| **Nagold** | https://saviold.github.io/gau--gmbh/nagold/ | Nagold-Tabelle |
+
+Meta-Targeting je Standort 35 km Radius. Je 3 Konzepte × 2 Formate.
+Dateien: `gauss_projektleiter_<rottenburg|nagold>_<A|B|C>_<4x5|9x16>.jpg`
+Formate: `4x5` = Feed (2160×2700), `9x16` = Story/Reels (2160×3840).
 
 | Konzept | Headline | Foto |
 |---|---|---|
@@ -10,8 +17,5 @@ Marke: Gauß-Blau/Orange, Original-Logo, DM Sans. Echte Fotos. Keine URL im Bild
 | B | Feierabend ist bei uns **kein Zufall.** | Bauhelm auf Plänen |
 | C | Andere reden von der Wärmewende. **Du leitest sie.** | Team am Bauplan |
 
-Dateien: `gauss_projektleiter_rottenburg_<A|B|C>_<4x5|9x16>.jpg`
-Formate: `4x5` = Feed (2160×2700), `9x16` = Story/Reels (2160×3840).
-
-**Ziel-URL (ins Website-/Button-Feld):** https://saviold.github.io/gau--gmbh/
-Alle Leads landen automatisch in der Rottenburg-Tabelle.
+Hinweis: Rottenburg ist die per Kunden-Mail geschärfte Position (HLS, Kalkulation→Schlussrechnung,
+CAD, Vertretung der Geschäftsführung). Nagold läuft als allgemeine Projektleiter-Stelle weiter.
