@@ -1,12 +1,12 @@
-# Ad-Creatives · Projektleiter (m/w/d) · Gauß GmbH · Nagold & Rottenburg
+# Ad-Creatives · Projektleiter (m/w/d) · Gauß GmbH · Nagold & Freudenstadt
 
 Eine Landingpage, Standort-Auswahl im Bewerbungs-Funnel → Lead landet automatisch
-in der richtigen LeadTable-Tabelle (Nagold ↔ Rottenburg). Gleiche Stelle & Anforderungen an beiden Standorten.
+in der richtigen LeadTable-Tabelle (Nagold ↔ Freudenstadt). Gleiche Stelle & Anforderungen an beiden Standorten.
 
 **Ziel-URLs (belegen den Standort vor):**
 - Nagold-Ads: `https://saviold.github.io/gau--gmbh/?standort=nagold`
-- Rottenburg-Ads: `https://saviold.github.io/gau--gmbh/?standort=rottenburg`
-(Meta-Targeting je 35 km Radius. Bilder je Standort: `*_nagold_*` bzw. `*_rottenburg_*`.)
+- Freudenstadt-Ads: `https://saviold.github.io/gau--gmbh/?standort=freudenstadt`
+(Meta-Targeting je 35 km Radius. Bilder je Standort: `*_nagold_*` bzw. `*_freudenstadt_*`.)
 
 Je 3 Konzepte × 2 Formate. `4x5` = Feed (2160×2700), `9x16` = Story/Reels (2160×3840).
 

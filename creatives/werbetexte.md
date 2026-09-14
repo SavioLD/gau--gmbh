@@ -1,8 +1,8 @@
-# Werbetexte · Projektleiter (m/w/d) · Gauß GmbH · Nagold & Rottenburg
+# Werbetexte · Projektleiter (m/w/d) · Gauß GmbH · Nagold & Freudenstadt
 
 **Button/CTA:** Jetzt bewerben
 - **Nagold-Ads → URL:** https://saviold.github.io/gau--gmbh/?standort=nagold  (Bilder *_nagold_*)
-- **Rottenburg-Ads → URL:** https://saviold.github.io/gau--gmbh/?standort=rottenburg  (Bilder *_rottenburg_*)
+- **Freudenstadt-Ads → URL:** https://saviold.github.io/gau--gmbh/?standort=freudenstadt  (Bilder *_freudenstadt_*)
 
 Gleiche Stelle & Texte für beide Standorte – der Ort steht auf dem Bild / wird über die URL vorgewählt. Der Lead landet automatisch in der passenden Tabelle.
 
